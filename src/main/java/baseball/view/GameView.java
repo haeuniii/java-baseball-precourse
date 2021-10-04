@@ -19,6 +19,13 @@ public class GameView {
         if (ballCount > 0)      System.out.println(ballCount + Message.BALL.getMessage());
     }
 
+    public static void printSuccess(boolean isRight) {
+        if (isRight) {
+            System.out.println(Message.SUCCESS.getMessage());
+            printGameRestart();
+        }
+    }
+
     public static void printNothing(boolean isNothing) {
         if (isNothing)  System.out.println(Message.NOTHING.getMessage());
     }
