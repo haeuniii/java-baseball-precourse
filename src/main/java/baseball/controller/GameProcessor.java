@@ -9,7 +9,7 @@ import nextstep.utils.Randoms;
 public class GameProcessor {
     public void gameStart() {
         boolean isContinue = true;
-        int targetNumber = Randoms.pickNumberInRange(NumberRange.START.getRange(), NumberRange.END.getRange());
+        int targetNumber = getRandomNumber();
 
         while (isContinue) {
             GameView.printGameStart();
@@ -21,7 +21,11 @@ public class GameProcessor {
             GameView.printSuccess(game.isRight());
 
             isContinue = game.isRight() ? game.isGameContinue(Console.readLine()) : true;
-            targetNumber = isContinue == true && game.isRight() ? Randoms.pickNumberInRange(NumberRange.START.getRange(), NumberRange.END.getRange()) : targetNumber;
+            targetNumber = isContinue == true && game.isRight() ? getRandomNumber() : targetNumber;
         }
+    }
+
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(NumberRange.START.getRange(), NumberRange.END.getRange());
     }
 }
