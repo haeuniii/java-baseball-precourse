@@ -27,7 +27,7 @@ public class Game {
             source = source / 10;
         }
 
-        this.strike = isRight() ? 0 : count;
+        this.strike = count;
     }
 
     public int getStrikeCount() {
@@ -48,7 +48,7 @@ public class Game {
             }
         }
 
-        this.ball = isRight() ? 0 : digit - _source.length() - this.strike;
+        this.ball = digit - _source.length() - this.strike;
     }
 
     public boolean isNothing() {
@@ -57,7 +57,7 @@ public class Game {
     }
 
     public boolean isRight() {
-        return this.target == this.source;
+        return this.strike == 3;
     }
 
     public static boolean isGameContinue(String res) {
