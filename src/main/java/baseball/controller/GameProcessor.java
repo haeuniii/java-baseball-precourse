@@ -13,15 +13,16 @@ public class GameProcessor {
 
         while (isContinue) {
             GameView.printGameStart();
+
             Game game = new Game(Console.readLine(), targetNumber);
 
-            GameView.printStrike(game.getStrikeCount());
-            GameView.printBall(game.getBallCount());
-            GameView.printNothing(!game.isRight() && game.isNothing());
+            GameView.printStrike(game.getStrikeCount(), game.getBallCount());
+            GameView.printBall(game.getStrikeCount(), game.getBallCount());
+            GameView.printNothing(game.isNothing());
             GameView.printSuccess(game.isRight());
 
             isContinue = game.isRight() ? game.isGameContinue(Console.readLine()) : true;
-            targetNumber = isContinue == true && game.isRight() ? getRandomNumber() : targetNumber;
+            targetNumber = isContinue == true ? getRandomNumber() : targetNumber;
         }
     }
 
