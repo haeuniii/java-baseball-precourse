@@ -11,11 +11,13 @@ public class GameView {
         System.out.print(Message.RESTART.getMessage());
     }
 
-    public static void printStrike(int strikeCount) {
-        if (strikeCount > 0)    System.out.println(strikeCount + Message.STRIKE.getMessage());
+    public static void printStrike(int strikeCount, int ballCount) {
+        if (strikeCount > 0)    System.out.print(strikeCount + Message.STRIKE.getMessage());
+        if (strikeCount > 0 && ballCount == 0)     System.out.println("");
     }
 
-    public static void printBall(int ballCount) {
+    public static void printBall(int strikeCount, int ballCount) {
+        if (strikeCount > 0)    System.out.print(" ");
         if (ballCount > 0)      System.out.println(ballCount + Message.BALL.getMessage());
     }
 
