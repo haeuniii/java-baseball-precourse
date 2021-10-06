@@ -6,7 +6,8 @@ public enum Message {
     BALL("볼"),
     STRIKE("스트라이크"),
     NOTHING("낫싱"),
-    SUCCESS("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
+    SUCCESS("3개의 숫자를 모두 맞히셨습니다! 게임 끝"),
+    ERROR("ERROR");
 
     private final String message;
 

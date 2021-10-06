@@ -21,7 +21,7 @@ public class ApplicationTest extends NSTest {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms
                     .when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(1, 3, 5);
+                    .thenReturn(135);
             running("246");
             verify("낫싱");
         }

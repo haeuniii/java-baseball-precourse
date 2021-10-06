@@ -7,10 +7,14 @@ public enum StartCode {
     YES("1"),
     NO("2");
 
-    private final String message;
+    private final String code;
 
-    StartCode(String _message) {
-        this.message = _message;
+    StartCode(String _code) {
+        this.code = _code;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     private static Map<String, StartCode> codeMap = null;
@@ -20,7 +24,7 @@ public enum StartCode {
             codeMap = new HashMap<>();
 
             for (StartCode code : values()) {
-                codeMap.put(code.message, code);
+                codeMap.put(code.code, code);
             }
         }
 

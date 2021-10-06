@@ -3,30 +3,25 @@ package baseball.controller;
 import baseball.model.Game;
 import baseball.utils.NumberRange;
 import baseball.view.GameView;
-import nextstep.utils.Console;
 import nextstep.utils.Randoms;
 
 public class GameProcessor {
-    public void gameStart() {
-        boolean isContinue = true;
-        int targetNumber = getRandomNumber();
+    public boolean gameStart(int targetNumber) {
+        GameView.printGameStart();
 
-        while (isContinue) {
-            GameView.printGameStart();
+        String input = GameView.readLine();
+        if (!GameView.isValidNumber(input))    return false;
 
-            Game game = new Game(Console.readLine(), targetNumber);
+        Game game = new Game(input, targetNumber);
+        GameView.printResult(game);
 
-            GameView.printStrike(game.getStrikeCount(), game.getBallCount());
-            GameView.printBall(game.getStrikeCount(), game.getBallCount());
-            GameView.printNothing(game.isNothing());
-            GameView.printSuccess(game.isRight());
+        input = GameView.readLine();
+        if (!GameView.isValidContinueNumber(input))    return false;
 
-            isContinue = game.isRight() ? game.isGameContinue(Console.readLine()) : true;
-            targetNumber = isContinue == true ? getRandomNumber() : targetNumber;
-        }
+        return game.isRight() ? game.isGameContinue(input) : true;
     }
 
-    private int getRandomNumber() {
+    public int getRandomNumber() {
         return Randoms.pickNumberInRange(NumberRange.START.getRange(), NumberRange.END.getRange());
     }
 }
